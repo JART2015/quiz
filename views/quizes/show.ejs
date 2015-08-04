@@ -4,3 +4,12 @@
 	<input type="text" name="respuesta" placeholder="Respuesta"/>
 	<input type="submit" value="Enviar"/>
 </form>
+
+<p><a href="/quizes/<%= quiz.id %>/comments/new"><button id="boton">Nuevo comentario</button></a></p>
+<div>
+  <p><b>Comentarios:</b></p>
+  <% console.log(quiz.Comments);
+    for(index in quiz.Comments){%>
+    <p>- <%=quiz.Comments[index].texto%></p>
+  <%}%>
+</div>
