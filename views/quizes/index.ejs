@@ -6,6 +6,7 @@
 <% var i; for(i=0;i<quizes.length;i++){ %>
 <tr>
 	<td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+	<% if(session.user){%>
 	<td><%= quizes[i].tema %></td>
 	<td><a href="quizes/<%= quizes[i].id %>/edit"><button id="boton" >Editar</button></a></td>
 	<td>
@@ -15,6 +16,7 @@
 		</button>
 		</form>
 	</td>
+	<%}%>
 </tr>
 <%}%>
 <tr><td></br>
@@ -22,8 +24,10 @@
 
 <input type="submit" value="Buscar Pregunta" id="boton" />
 <input type="text" name="search" size="13"/>
+<% if(session.user){%>
 </form>
 </tr></td>
 <tr><td>
 <a href="/quizes/new"><button type="button" id="boton" >  Crear pregunta  </button></a>
 </tr></td></table>
+<%}%>
