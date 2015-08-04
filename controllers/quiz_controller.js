@@ -22,13 +22,25 @@ exports.answer=function(req,res){
 };
 //get /quizes
 exports.index=function(req,res){
-	if(req.query.search!=""){
+	var str = req.query.search;
+	
+	if(!req.query.search){
+		str = '';		
+	}else{		
+		str = str.split(' ').join('%');
+	}	
+	models.Quiz.findAll({where: ["lower(pregunta) like ?", '%'+ str.toLowerCase() + '%'], order: 'tema ASC'}).then(function(quizes){
+			res.render('quizes/index', {quizes: quizes,errors:[]});	
+		})	
+};
+
+	/*if(req.query.search!=""){
 		var info=(req.query.search||"").replace(" ","%");
 	}else{info="";}
 	models.Quiz.findAll({where:['pregunta like ?','%'+info+'%'],order:'pregunta ASC'}).then(function(quizes){
 			res.render('quizes/index.ejs',{quizes:quizes,errors:[]});
 	}).catch(function(error){next(error);});
-};
+};*/
 //get /quizes/new
 exports.new=function(req,res){
 	var quiz=models.Quiz.build(//crea objeto quiz

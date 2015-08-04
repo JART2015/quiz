@@ -7,22 +7,23 @@
 <tr>
 	<td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
 	<td><%= quizes[i].tema %></td>
-	<td><a href="quizes/<%= quizes[i].id %>/edit"><button>Editar</button></a></td>
+	<td><a href="quizes/<%= quizes[i].id %>/edit"><button id="boton" >Editar</button></a></td>
 	<td>
 		<form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
-		<button type="submit" onclick="return confirm('Borrar:<%= quizes[i].pregunta%>');">
+		<button type="submit" onclick="return confirm('Borrar la pregunta: <%= quizes[i].pregunta%>');" id="boton" >
 		borrar
 		</button>
 		</form>
 	</td>
 </tr>
 <%}%>
-<tr><td>
+<tr><td></br>
 <form method="get" action="quizes">
-<input type="text" name="search" size="12"/>
-<input type="submit" value="Buscar" />
+
+<input type="submit" value="Buscar Pregunta" id="boton" />
+<input type="text" name="search" size="13"/>
 </form>
 </tr></td>
 <tr><td>
-<a href="/quizes/new"><button type="button">Crear pregunta</button></a>
+<a href="/quizes/new"><button type="button" id="boton" >  Crear pregunta  </button></a>
 </tr></td></table>
