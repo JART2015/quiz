@@ -24,10 +24,12 @@
 
 <input type="submit" value="Buscar Pregunta" id="boton" />
 <input type="text" name="search" size="13"/>
-<% if(session.user){%>
 </form>
-</tr></td>
-<tr><td>
-<a href="/quizes/new"><button type="button" id="boton" >  Crear pregunta  </button></a>
-</tr></td></table>
+
+<% if(session.user){%>
+	</tr></td>
+		<tr><td>
+			<a href="/quizes/new"><button type="button" id="boton" >  Crear pregunta  </button></a>
+		</tr></td>
 <%}%>
+</table>
